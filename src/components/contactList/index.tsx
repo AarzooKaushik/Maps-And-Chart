@@ -19,7 +19,7 @@ const ContactPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState<User>(DEFAULT_OBJECT);
   const [currentEditIndex, setCurrentEditIndex] = useState<number | null>(null);
-
+  const [counter, setCounter] = useState(0);
   const [formErrors, setFormErrors] = useState({
     firstName: "",
     lastName: "",
@@ -50,6 +50,7 @@ const ContactPage = () => {
       firstName: "",
       lastName: "",
     });
+    setCurrentEditIndex(null);
   };
 
   const validateForm = () => {
@@ -72,10 +73,11 @@ const ContactPage = () => {
     return valid;
   };
 
-  let counter = 0;
+ 
 
   function generateUniqueId() {
-    return counter++;
+    setCounter(prevCounter => prevCounter + 1);
+    return counter;
   }
 
   const onSave = () => {
@@ -121,6 +123,7 @@ const ContactPage = () => {
         onClick={() => {
           setShowForm(!showForm);
           setFormData(DEFAULT_OBJECT);
+          setCurrentEditIndex(null);
         }}
       >
         Create Contact +
