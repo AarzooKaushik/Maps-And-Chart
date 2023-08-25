@@ -10,12 +10,12 @@ const LayOut: React.FC = () => {
   };
   const location = useLocation();
 
-  let heading = "Contact Page";
+  let heading = "Contacts";
 
   if (location.pathname === "/graph") {
-    heading = "Chart Page";
+    heading = "Chart";
   } else if (location.pathname === "/maps") {
-    heading = "Map Page";
+    heading = "Map";
   }
   return (
     <div className="h-screen overflow-hidden">
@@ -29,7 +29,9 @@ const LayOut: React.FC = () => {
          &#9776;
         </button>
       </div>
-      <div className="flex h-screen "  onClick={toggleSidebar} >
+      <div className="flex h-screen "  onClick={()=> {
+        setIsSidebarOpen(false);
+      }} >
         <div className={`border-r-2 border-black h-full  overflow-hidden w-72 z-50 max-[600px]:bg-white max-[600px]:absolute max-[600px]:top-0 max-[600px]:left-0 ${
             isSidebarOpen ? "block" : "max-[600px]:hidden" 
           }`}>
